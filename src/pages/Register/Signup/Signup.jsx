@@ -39,7 +39,8 @@ const Signup = () => {
         role:data.role,
         salary:data.salary,
         account:data.account,
-        image
+        image,
+        varified:false
         
 
       }
