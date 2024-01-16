@@ -5,6 +5,7 @@ import Login from "../pages/Register/Login/Login";
 import Signup from "../pages/Register/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import EmployeeList from "../pages/Dashboard/EmployeeList/EmployeeList";
 
 export const routers = createBrowserRouter([
   {
@@ -28,5 +29,14 @@ export const routers = createBrowserRouter([
   {
     path:'/dashboard',
     element:<PrivateRoute><Dashboard/></PrivateRoute>
+    ,
+    children:[
+      // only for HR
+      {
+        path:'employee_list',
+        element:<EmployeeList/>
+      }
+    ]
+ 
   }
 ]);
