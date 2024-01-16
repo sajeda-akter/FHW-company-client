@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import axios from "axios";
 
 
-// const image_hosting_key=import.meta.env.VITE_IMAGE_HOSTING_KEY;
-// const image_hosting_api=`https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+const image_hosting_key = import.meta.env.VITE_REACT_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const Signup = () => {
   const {
     register,
@@ -17,11 +19,18 @@ const Signup = () => {
 
   const {userCreate,updateUserInfo}=useContext(AuthContext)
   const handleSignup = async(data) => {
-   
 
+   const imgFile = { image: data.image[0] };
+   const res = await axios.post(image_hosting_api, imgFile, {
+     headers: {
+       "content-type": "multipart/form-data",
+     },
+   });
+   if(res.data.success){
         userCreate(data.email,data.password)
     .then(result=>{
-      updateUserInfo(data.name,data.photoURL)
+      const image=res.data.data.display_url
+      updateUserInfo(data.name,image)
       Swal.fire({
         position: "center",
         icon: "success",
@@ -34,6 +43,8 @@ const Signup = () => {
     })
     .catch(err=>console.log(err))
     reset()
+   }
+    
   };
   return (
     <div className="p-12 rounded-lg bg-[#092635] max-w-4xl mx-auto text-white my-12">
@@ -54,14 +65,14 @@ const Signup = () => {
         <div className="form-control my-3">
           <input
             type="file"
-            name="photo"
-            placeholder="Select Your photoURL"
-            {...register("photoURL", { required: true })}
+            name="image"
+            placeholder="Select Your image"
+            {...register("image", { required: true })}
             className="text-[17px] outline-0 border-b-2 border-white text-white bg-[#092635]"
           />
-          {errors.photoURL && (
+          {errors.image && (
             <span className="text-red-500 font-medium">
-              PhotoURL is require
+              Image is require
             </span>
           )}
         </div>
