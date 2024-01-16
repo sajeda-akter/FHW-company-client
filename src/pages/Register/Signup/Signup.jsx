@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import axios from "axios";
+import usePublicAxios from "../../../components/usePublicAxios";
 
 
 const image_hosting_key = import.meta.env.VITE_REACT_IMAGE_HOSTING_KEY;
@@ -16,6 +17,8 @@ const Signup = () => {
     reset,
     formState: { errors },
   } = useForm();
+  const publicAxios=usePublicAxios()
+  const navigate=useNavigate()
 
   const {userCreate,updateUserInfo}=useContext(AuthContext)
   const handleSignup = async(data) => {
@@ -30,7 +33,22 @@ const Signup = () => {
         userCreate(data.email,data.password)
     .then(result=>{
       const image=res.data.data.display_url
+      const userInfo={
+        user:data.name,
+        email:data.email,
+        role:data.role,
+        salary:data.salary,
+        account:data.account,
+        image
+        
+
+      }
+      
       updateUserInfo(data.name,image)
+      .then(()=>{
+        const res=publicAxios.post('/users',userInfo)
+        return res.data
+      })
       Swal.fire({
         position: "center",
         icon: "success",
@@ -38,7 +56,7 @@ const Signup = () => {
         showConfirmButton: false,
         timer: 1000
       });
-      console.log(result.user)
+     navigate('/')
 
     })
     .catch(err=>console.log(err))
@@ -74,6 +92,47 @@ const Signup = () => {
             <span className="text-red-500 font-medium">
               Image is require
             </span>
+          )}
+        </div>
+        <div className="form-control my-3">
+        <select
+              name="role"
+              {...register("role")}
+              className="text-[17px] outline-0 border-b-2 border-white text-white bg-[#092635]"
+            >
+              <option disabled selected>
+                Select your designation
+              </option>
+              <option value="admin">Admin</option>
+              <option value="hr">HR</option>
+              <option value="employee">Employee</option>
+            </select>
+          {errors.role && (
+            <span className="text-red-500 font-medium">Designation is require</span>
+          )}
+        </div>
+        <div className="form-control my-3">
+          <input
+            type="number"
+            {...register("salary", { required: true })}
+            name="salary"
+            placeholder="Enter your salary"
+            className="text-[17px] outline-0 border-b-2 border-white text-white bg-[#092635]"
+          />
+          {errors.salary && (
+            <span className="text-red-500 font-medium">Salary is require</span>
+          )}
+        </div>
+        <div className="form-control my-3">
+          <input
+            type="text"
+            {...register("account", { required: true })}
+            name="account"
+            placeholder="Enter your account"
+            className="text-[17px] outline-0 border-b-2 border-white text-white bg-[#092635]"
+          />
+          {errors.account && (
+            <span className="text-red-500 font-medium">Account is require</span>
           )}
         </div>
         <div className="form-control my-3">
