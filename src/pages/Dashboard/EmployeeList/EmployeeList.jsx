@@ -74,7 +74,7 @@ const EmployeeList = () => {
                   <button className="border-2 border-[#FFC5C5] text-[#DA0037] px-4 py-2 rounded">Pay</button>
                 </td>
                 <td >
-                  <span className=" text-[#DA0037] bg-[#FFC5C5] rounded-md p-3"><Link>Details</Link></span>
+                  <span className=" text-[#DA0037] bg-[#FFC5C5] rounded-md p-3"><Link to={`/dashboard/details/${employee._id}`}>Details</Link></span>
                 </td>
               </tr>
             ))}

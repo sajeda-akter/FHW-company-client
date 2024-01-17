@@ -6,6 +6,8 @@ import Signup from "../pages/Register/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import EmployeeList from "../pages/Dashboard/EmployeeList/EmployeeList";
+import HrRouter from "./HrRouter";
+import CheckOut from "../pages/Dashboard/CheckOut/CheckOut";
 
 export const routers = createBrowserRouter([
   {
@@ -34,7 +36,12 @@ export const routers = createBrowserRouter([
       // only for HR
       {
         path:'employee_list',
-        element:<EmployeeList/>
+        element:<HrRouter><EmployeeList/></HrRouter>
+      },
+      {
+        path:'/details/:id',
+        loader:({params})=>fetch(`http://localhost:5000/users/${params.id}`),
+        element:<CheckOut/>
       }
     ]
  
