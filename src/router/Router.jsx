@@ -39,7 +39,7 @@ export const routers = createBrowserRouter([
         element:<HrRouter><EmployeeList/></HrRouter>
       },
       {
-        path:'/details/:id',
+        path:'details/:id',
         loader:({params})=>fetch(`http://localhost:5000/users/${params.id}`),
         element:<CheckOut/>
       }
