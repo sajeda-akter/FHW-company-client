@@ -15,6 +15,7 @@ const Dashboard = () => {
         </li>
       ) : (
         <li className="text-[16px] font-medium">
+          <Link to="/dashboard/paymenthistory">My Payment History</Link>
           <Link to="/">Home</Link>
         </li>
       )}

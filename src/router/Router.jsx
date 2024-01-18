@@ -8,6 +8,9 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import EmployeeList from "../pages/Dashboard/EmployeeList/EmployeeList";
 import HrRouter from "./HrRouter";
 import CheckOut from "../pages/Dashboard/CheckOut/CheckOut";
+import PaymentCheck from "../pages/Dashboard/EmployeeList/PayModal/PaymentCheck/PaymentCheck";
+import TestPayment from "../pages/TestPayment/TestPayment";
+import Employee from "../pages/Dashboard/Employee/Employee";
 
 export const routers = createBrowserRouter([
   {
@@ -40,9 +43,20 @@ export const routers = createBrowserRouter([
       },
       {
         path:'details/:id',
-        loader:({params})=>fetch(`http://localhost:5000/users/${params.id}`),
+        loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`),
         element:<CheckOut/>
+      },
+      
+      {
+        path:'payment/:id',
+        loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`),
+        element:<TestPayment/>
+      },
+      {
+        path:'paymenthistory',
+        element:<Employee/>
       }
+
     ]
  
   }
