@@ -11,6 +11,7 @@ import CheckOut from "../pages/Dashboard/CheckOut/CheckOut";
 import PaymentCheck from "../pages/Dashboard/EmployeeList/PayModal/PaymentCheck/PaymentCheck";
 import TestPayment from "../pages/TestPayment/TestPayment";
 import Employee from "../pages/Dashboard/Employee/Employee";
+import EmployeeForAdmin from "../pages/Dashboard/EmployeeForAdmin/EmployeeForAdmin";
 
 export const routers = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const routers = createBrowserRouter([
       {
         path:'paymenthistory',
         element:<Employee/>
+      },
+      {
+        path:'employees',
+        element:<EmployeeForAdmin/>
       }
 
     ]

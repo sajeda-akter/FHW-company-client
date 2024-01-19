@@ -1,0 +1,27 @@
+[
+    {
+        "service":"Marketing",
+        "image":"https://i.ibb.co/3McZkxF/marketing.jpg",
+        "description":"it's easy to assign work, manage deadlines, collaborate with stakeholders, and visualize progress across all marketing initiatives."
+        ,"price":8000
+    },
+    {
+        "service":"Paper Work",
+        "image":"https://i.ibb.co/3Msv47T/paper.jpg",
+        "description":"Professional Paperwork Services is a company that is there for you! We take care of your bills and paperwork so that you have more time and less worry."
+        ,"price":5000
+    },
+    {
+        "service":"Sales",
+        "image":"https://i.ibb.co/WvkWpLw/sales.jpg",
+        "description":"A salesperson is an individual who performs all the activities associated with selling a product or a service."
+        ,"price":9000
+    },
+    {
+        "service":"Content",
+        "image":"https://i.ibb.co/2WprBZd/content.jpg",
+        "description":" Content (media), information or experience provided to audience or end-users by publishers or media producers ·"
+        ,"price":7000
+    }
+    
+]

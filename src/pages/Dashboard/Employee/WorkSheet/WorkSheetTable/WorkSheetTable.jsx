@@ -7,12 +7,13 @@ import { AuthContext } from "../../../../../Provider/AuthProvider/AuthProvider";
 const WorkSheetTable = () => {
     const axiosSecure=UseAxiosSecure()
     const {user}=useContext(AuthContext)
-    const {data:works=[]}=useQuery({
+    const {data:works=[],refetch}=useQuery({
         queryKey:['works'],
         queryFn:async()=>{
-            const res=await axiosSecure.get(`/workSheet/${user?.email}`)
-        return res.data
+          const res= await axiosSecure.get(`/workSheet/${user?.email}`)
+          return res.data
         }
+
     })
     
     return (

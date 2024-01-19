@@ -2,25 +2,27 @@ import { Link, Outlet } from "react-router-dom";
 import useHR from "../../components/useHR";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import useAdmin from "../../components/useAdmin";
 
 const Dashboard = () => {
   const [isHr] = useHR();
+  const [isAdmin] = useAdmin();
   const { user } = useContext(AuthContext);
 
-  const menuItem = (
-    <>
-      {isHr ? (
-        <li className="text-[16px] font-medium">
-          <Link to="/dashboard/employee_list">Employee List</Link>
-        </li>
-      ) : (
-        <li className="text-[16px] font-medium">
-          <Link to="/dashboard/paymenthistory">My Payment History</Link>
-          <Link to="/">Home</Link>
-        </li>
-      )}
-    </>
-  );
+  const menuItem=<>
+   {isHr &&
+                <li className="text-[16px] font-medium">
+                  <Link to="/dashboard/employee_list">Employee List</Link>
+                </li>
+  
+   }
+   {
+    isAdmin &&  <li className="text-[16px] font-medium">
+    <Link to="/dashboard/employees">Employees</Link>
+  </li>
+   }
+  </>
+
   return (
     <div className="drawer">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -52,7 +54,7 @@ const Dashboard = () => {
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
-              {menuItem}
+          {menuItem}
             </ul>
           </div>
         </div>

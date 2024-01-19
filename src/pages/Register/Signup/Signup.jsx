@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import axios from "axios";
 import usePublicAxios from "../../../components/usePublicAxios";
+import UseAxiosSecure from "../../../components/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 
 const image_hosting_key = import.meta.env.VITE_REACT_IMAGE_HOSTING_KEY;
@@ -19,50 +21,68 @@ const Signup = () => {
   } = useForm();
   const publicAxios=usePublicAxios()
   const navigate=useNavigate()
-
   const {userCreate,updateUserInfo}=useContext(AuthContext)
+
+ 
+  
+  
   const handleSignup = async(data) => {
 
-   const imgFile = { image: data.image[0] };
-   const res = await axios.post(image_hosting_api, imgFile, {
-     headers: {
-       "content-type": "multipart/form-data",
-     },
-   });
-   if(res.data.success){
-        userCreate(data.email,data.password)
-    .then(result=>{
-      const image=res.data.data.display_url
-      const userInfo={
-        user:data.name,
-        email:data.email,
-        role:data.role,
-        salary:data.salary,
-        account:data.account,
-        image,
-        varified:false
-        
-
-      }
-      
-      updateUserInfo(data.name,image)
-      .then(()=>{
-        const res=publicAxios.post('/users',userInfo)
-        return res.data
-      })
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "User successfully signup",
-        showConfirmButton: false,
-        timer: 1000
-      });
-     navigate('/')
-
-    })
-    .catch(err=>console.log(err))
+  if(data.role ==='admin'){
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Already has a admin",
+      showConfirmButton: false,
+      timer: 1000
+    });
     reset()
-   }
+ 
+  }
+  else{
+    const imgFile = { image: data.image[0] };
+    const res = await axios.post(image_hosting_api, imgFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    if(res.data.success){
+         userCreate(data.email,data.password)
+     .then(result=>{
+       const image=res.data.data.display_url
+       const userInfo={
+         user:data.name,
+         email:data.email,
+         role:data.role,
+         salary:data.salary,
+         account:data.account,
+         image,
+         varified:false,
+         isFired:false
+         
+ 
+       }
+       
+       updateUserInfo(data.name,image)
+       .then(()=>{
+         const res=publicAxios.post('/users',userInfo)
+         return res.data
+       })
+       Swal.fire({
+         position: "center",
+         icon: "success",
+         title: "User successfully signup",
+         showConfirmButton: false,
+         timer: 1000
+       });
+      navigate('/')
+ 
+     })
+     .catch(err=>console.log(err))
+     reset()
+    }
+    
+  }
     
   };
   return (
