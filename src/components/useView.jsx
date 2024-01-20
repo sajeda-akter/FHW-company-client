@@ -19,7 +19,7 @@ const useView = () => {
           if (res.data.modifiedCount > 0) {
             Swal.fire({
               title: "Update!",
-              text: "Your file has been update.",
+              text: "Employee verified complete.",
               icon: "success",
             });
           }

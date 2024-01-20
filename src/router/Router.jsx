@@ -12,10 +12,12 @@ import TestPayment from "../pages/TestPayment/TestPayment";
 import Employee from "../pages/Dashboard/Employee/Employee";
 import EmployeeForAdmin from "../pages/Dashboard/EmployeeForAdmin/EmployeeForAdmin";
 import Contact from "../pages/Contact/Contact";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const routers = createBrowserRouter([
   {
     path: "/",
+    errorElement:<ErrorPage/>,
     element: <Main />,
     children: [
       {

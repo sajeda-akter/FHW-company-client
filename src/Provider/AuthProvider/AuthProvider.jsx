@@ -34,7 +34,7 @@ const AuthProvider = ({children}) => {
             if(currentUser){
                 // 
                 const userEmail={email:currentUser.email}
-                fetch('http://localhost:5000/jwt',{
+                fetch('https://assaingment12-category-0004-server.vercel.app/jwt',{
                     method:"POST",
                     headers:{
                         'content-type':'application/json'
@@ -69,7 +69,5 @@ const AuthProvider = ({children}) => {
         </AuthContext.Provider>
     );
 };
- // bg-[#FFC5C5]
-    // text-[#DA0037]
 
 export default AuthProvider;

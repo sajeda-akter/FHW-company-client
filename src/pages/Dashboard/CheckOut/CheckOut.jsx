@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import React, { PureComponent } from 'react';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import UseAxiosSecure from "../../../components/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +21,7 @@ const CheckOut = () => {
     monthYear: `${item.month},${item.year}`, // Modify this line based on your actual data structure
   }));
 
-
+console.log(specificUser,payments.usersData)
 
 
 
@@ -36,7 +35,7 @@ const CheckOut = () => {
           <p className="text-[#DA0037] text-xl font-medium">{usersData.role}</p>
         </div>
       </div> 
-      <h3  className="text-3xl text-center mt-10 mb-7 font-medium border-y-2 border-gray-400 w-80 py-2 mx-auto">All Employee </h3>
+      <h3  className="text-3xl text-center mt-10 mb-7 font-medium border-y-2 border-gray-400 w-80 py-2 mx-auto">Payment Charts </h3>
       <ResponsiveContainer width="40%" height="60%">
         <BarChart
           width={50}

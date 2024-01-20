@@ -1,12 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import axios from "axios";
 import usePublicAxios from "../../../components/usePublicAxios";
-import UseAxiosSecure from "../../../components/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+
 
 
 const image_hosting_key = import.meta.env.VITE_REACT_IMAGE_HOSTING_KEY;

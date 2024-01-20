@@ -8,7 +8,7 @@ const usePayment = () => {
     const {data:userSalary=[],refetch}=useQuery({
         queryKey:['userSalary'],
         queryFn:async()=>{
-            const data=await fetch(`http://localhost:5000/addpayment?email=${user?.email}`)
+            const data=await fetch(`https://assaingment12-category-0004-server.vercel.app/addpayment?email=${user?.email}`)
         return data.json()
         }
     })
