@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 
@@ -11,6 +11,8 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
+  const navigate=useNavigate()
+  const location=useLocation()
   const {userLogin}=useContext(AuthContext)
   const handleLogin = (data) => {
     userLogin(data.email,data.password)
@@ -23,9 +25,19 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500
           });
+          navigate(location.state? location.state?.from.pathname:'/')
+          reset();
     })
-    .catch(err=>console.log(err))
-    reset();
+    .catch(err=>{
+      Swal.fire({
+        position: "center",
+        title:`${err.message}`,
+        icon: "error",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    
   };
   return (
     <div className="p-12 rounded-lg bg-[#092635] max-w-4xl mx-auto text-white my-12">

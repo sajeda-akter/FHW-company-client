@@ -67,12 +67,14 @@ const EmployeeForAdmin = () => {
       >
         {isTableView ? "Switch to Card View" : "Switch to Table View"}
       </button>
+
+      <h1 className="text-2xl font-medium mt-12">All Employee and HR</h1>
       {isTableView ? (
         <div className="overflow-x-auto mt-5 ">
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="bg-red-200 lg:text-xl">
+              <tr className="bg-[#E6BAA3] text-[#DA0037] lg:text-xl">
                 <th></th>
                 <th>Name</th>
                 <th>Designation</th>

@@ -33,24 +33,31 @@ const WorkSheet = () => {
                 showConfirmButton: false,
                 timer: 1000
               });
+              reset()
         }
     })
     
   };
   return (
-    <div className="flex lg:flex-row flex-col justify-around items-center">
+   <div className="">
+   
+     <div className="mb-5 flex lg:flex-row flex-col justify-around gap-x-12">
+     <div>
+     <h3 className="text-3xl text-center mt-10 mb-7 lg:ml-40 font-medium border-y-2 border-[#FFC5C5] w-80 py-2 mx-auto">
+        Work Submit Form
+      </h3>
       <form
-        className="card-body max-w-md bg-red-200"
+        className="card-body lg:w-full w-11/12 mx-auto bg-red-200 rounded-md lg:ml-32"
         onSubmit={handleSubmit(handleWorkSheet)}
       >
         <div className="form-control ">
-          <select {...register('task',{required:true})} className="select select-bordered w-full max-w-xs" >
+          <select {...register('task',{required:true})} className="select select-bordered  w-80 md:w-full" >
             <option disabled selected>
              Select The Task
             </option>
             <option value='sales'>Sales</option>
             <option value='support'>Support</option>
-            <option value='contact'>Contact</option>
+            <option value='contact'>Content</option>
             <option value='paper work'>Paper Work</option>
             <option value='marketing'>Marketing</option>
             <option value='acoountant'>Acoountant</option>
@@ -63,13 +70,13 @@ const WorkSheet = () => {
             type="text"
             placeholder="Enter Worked time"
             {...register("work")}
-            className="input input-bordered"
+            className="input input-bordered w-80 md:w-full"
             required
           />
         </div>
         <div className="form-control">
           <ReactDatePicker
-            className="w-52 rounded-md p-3 border-2 border-text-red"
+            className="w-80 md:w-full rounded-md p-3 border-2 border-text-red"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             dateFormat="dd-MM-yyyy"
@@ -80,8 +87,10 @@ const WorkSheet = () => {
           <button className="btn btn-primary">Submit</button>
         </div>
       </form>
+     </div>
       <WorkSheetTable />
     </div>
+   </div>
   );
 };
 

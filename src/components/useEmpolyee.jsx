@@ -3,19 +3,19 @@ import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 import UseAxiosSecure from "./useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
-const useAdmin = () => {
+const useEmployee = () => {
     const {user,loading}=useContext(AuthContext)
     const axiosSecure=UseAxiosSecure()
-    const {data:isAdmin,isPending:isAdminLoading}=useQuery({
-     queryKey:[user?.email,'isAdmin'],
+    const {data:isEmployee,isPending:isEmployeeLoading}=useQuery({
+     queryKey:[user?.email,'isEmployee'],
      enabled:!loading,
      queryFn:async()=>{
-        const res= await axiosSecure.get(`/users/admin/${user?.email}`)
-       console.log(res.data)
-        return res.data?.admin
+        const res= await axiosSecure.get(`/users/employee/${user?.email}`)
+       
+        return res.data?.employee
      }
     })
-    return [isAdmin,isAdminLoading]
+    return [isEmployee,isEmployeeLoading]
 };
 
-export default useAdmin;
+export default useEmployee;

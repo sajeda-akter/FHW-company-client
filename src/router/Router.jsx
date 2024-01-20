@@ -8,10 +8,10 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import EmployeeList from "../pages/Dashboard/EmployeeList/EmployeeList";
 import HrRouter from "./HrRouter";
 import CheckOut from "../pages/Dashboard/CheckOut/CheckOut";
-import PaymentCheck from "../pages/Dashboard/EmployeeList/PayModal/PaymentCheck/PaymentCheck";
 import TestPayment from "../pages/TestPayment/TestPayment";
 import Employee from "../pages/Dashboard/Employee/Employee";
 import EmployeeForAdmin from "../pages/Dashboard/EmployeeForAdmin/EmployeeForAdmin";
+import Contact from "../pages/Contact/Contact";
 
 export const routers = createBrowserRouter([
   {
@@ -21,6 +21,10 @@ export const routers = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path:'/contact',
+        element:<Contact/>
       },
       {
         path: "/login",
@@ -44,13 +48,13 @@ export const routers = createBrowserRouter([
       },
       {
         path:'details/:id',
-        loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`),
+        loader:({params})=>fetch(`https://assaingment12-category-0004-server-6tm28nylr-sajedaakter16.vercel.app/user/${params.id}`),
         element:<CheckOut/>
       },
       
       {
         path:'payment/:id',
-        loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`),
+        loader:({params})=>fetch(`https://assaingment12-category-0004-server-6tm28nylr-sajedaakter16.vercel.app/user/${params.id}`),
         element:<TestPayment/>
       },
       {

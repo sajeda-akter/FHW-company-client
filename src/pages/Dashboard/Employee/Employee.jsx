@@ -19,11 +19,15 @@ const Employee = () => {
     
     return (
        <div>
-         <div className="overflow-x-auto">
-        <table className="table">
+       
+         <div className="overflow-x-auto lg:w-10/12 my-12 mx-auto">
+         <h3 className="text-3xl text-center mt-10 mb-7 font-medium border-y-2 border-[#FFC5C5] w-80 py-2 mx-auto">
+        Payment Details
+      </h3>
+        <table className="table ">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="lg:text-xl text-[12px] bg-slate-300">
               <th>Sl</th>
               <th>Month</th>
               <th>Amount</th>

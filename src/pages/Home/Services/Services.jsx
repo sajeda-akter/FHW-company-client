@@ -12,8 +12,8 @@ const Services = () => {
         }
     })
     return (
-        <div className="lg:w-10/12 w-11/12 mx-auto">
-            <h3 className="text-3xl mt-32 mb-4 text-center font-medium">Our Services</h3>
+        <div className="lg:w-10/12 w-11/12 mx-auto mt-32 mb-2">
+            <h3  className="text-3xl text-center mt-10 mb-7 font-medium border-y-2 border-[#FFC5C5] w-80 py-2 mx-auto">Our Services</h3>
            <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 md:grid-cols-2">
             {
          
