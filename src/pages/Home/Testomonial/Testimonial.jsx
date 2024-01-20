@@ -16,7 +16,7 @@ const Testimonial = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://assaingment12-category-0004-server-6tm28nylr-sajedaakter16.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
