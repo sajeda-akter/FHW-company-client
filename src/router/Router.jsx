@@ -48,13 +48,13 @@ export const routers = createBrowserRouter([
       },
       {
         path:'details/:id',
-        loader:({params})=>fetch(`https://assaingment12-category-0004-server-6tm28nylr-sajedaakter16.vercel.app/user/${params.id}`),
+        loader:({params})=>fetch(`https://assaingment12-category-0004-server.vercel.app/user/${params.id}`),
         element:<CheckOut/>
       },
       
       {
         path:'payment/:id',
-        loader:({params})=>fetch(`https://assaingment12-category-0004-server-6tm28nylr-sajedaakter16.vercel.app/user/${params.id}`),
+        loader:({params})=>fetch(`https://assaingment12-category-0004-server.vercel.app/user/${params.id}`),
         element:<TestPayment/>
       },
       {

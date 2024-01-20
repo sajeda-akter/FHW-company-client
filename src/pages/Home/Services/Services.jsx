@@ -6,7 +6,7 @@ const Services = () => {
     const {data:services=[]}=useQuery({
         queryKey:['services'],
         queryFn:async()=>{
-         const res=await axios.get('https://assaingment12-category-0004-server-6tm28nylr-sajedaakter16.vercel.app/services')
+         const res=await axios.get('https://assaingment12-category-0004-server.vercel.app/services')
        
          return res.data
         }
